@@ -2,6 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes')
 
+// CORS = Cross-Origin Resource Sharing
+const cors = require('cors');
+
+
+
 const app = express();
 
 mongoose.connect(
@@ -12,7 +17,11 @@ mongoose.connect(
   }
 );
 
+// Cors is letting our API be accessible by React
+app.use(cors());
+
 app.use(express.json());
 app.use(routes);
 
 app.listen(3333);
+
