@@ -1,11 +1,9 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const routes = require('./routes')
+const express = require("express");
+const mongoose = require("mongoose");
+const routes = require("./routes");
 
 // CORS = Cross-Origin Resource Sharing
-const cors = require('cors');
-
-
+const cors = require("cors");
 
 const app = express();
 
@@ -14,6 +12,7 @@ mongoose.connect(
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    // useCreateIndex: true,
   }
 );
 
@@ -24,4 +23,3 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(3333);
-

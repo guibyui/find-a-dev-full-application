@@ -22,6 +22,7 @@ function Main({ navigation }) {
   // Create the State to store the info
   const [devs, setDevs] = useState([]);
   const [currentRegion, setCurrentRegion] = useState(null);
+  const [techs, setTechs] = useState("");
 
   useEffect(() => {
     async function loadInitialPosition() {
@@ -64,12 +65,11 @@ function Main({ navigation }) {
       params: {
         latitude,
         longitude,
-        techs: "ReactJS",
+        techs,
       },
     });
 
     console.log(response.data.devs);
-    console.log(devs);
 
     // Setting the data that we got from the api
     setDevs(response.data.devs);
@@ -126,6 +126,8 @@ function Main({ navigation }) {
           placeholderTextColor="#999"
           autoCapitalize="words"
           autoCorrect={false}
+          value={techs}
+          onChangeText={setTechs}
         />
         <TouchableOpacity onPress={loadDevs} style={styles.loadButton}>
           <MaterialIcons name="my-location" size={20} color="#FFF" />
