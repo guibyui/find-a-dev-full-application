@@ -69,7 +69,7 @@ function Main({ navigation }) {
       },
     });
 
-    console.log(response.data.devs);
+    // console.log(response.data.devs);
 
     // Setting the data that we got from the api
     setDevs(response.data.devs);
