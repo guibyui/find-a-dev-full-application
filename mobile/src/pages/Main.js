@@ -47,19 +47,9 @@ function Main({ navigation }) {
     loadInitialPosition();
   }, []);
 
-  if (!currentRegion) {
-    return null;
-  }
-
-  // Every time the user changes the map, the currentRegion will be updated
-  function handleRegionChange(region) {
-    // console.log(region);
-
-    setCurrentRegion(region);
-  }
-
   async function loadDevs() {
     const { latitude, longitude } = currentRegion;
+
     // Getting the info from the api
     const response = await api.get("/search", {
       params: {
@@ -69,10 +59,21 @@ function Main({ navigation }) {
       },
     });
 
-    // console.log(response.data.devs);
+    console.log(response.data.devs);
 
     // Setting the data that we got from the api
     setDevs(response.data.devs);
+  }
+
+  // Every time the user changes the map, the currentRegion will be updated
+  function handleRegionChange(region) {
+    // console.log(region);
+
+    setCurrentRegion(region);
+  }
+
+  if (!currentRegion) {
+    return null;
   }
 
   return (

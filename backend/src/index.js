@@ -6,6 +6,7 @@ const routes = require("./routes");
 const cors = require("cors");
 
 const app = express();
+app.use(express.json());
 
 mongoose.connect(
   "mongodb+srv://findadev:findadev@findadev-wmsph.mongodb.net/findadevdb?retryWrites=true&w=majority",
@@ -19,7 +20,8 @@ mongoose.connect(
 // Cors is letting our API be accessible by React
 app.use(cors());
 
-app.use(express.json());
 app.use(routes);
 
 app.listen(3333);
+
+// .use is valid to all application routes.

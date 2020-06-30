@@ -14,16 +14,14 @@ module.exports = routes;
 // HTTP Methods: GET, POST, PUT, DELETE
 
 // PARAMETERS:
-// Query Params = request.query (filter, order...)
-// Route Params = request.params (Identify a resource at change or removal)
-// Body = request.body (Data for creation or change of a previous register)
+// Query Params = request.query (filter, order...) console.log(request.query)
+// Route Params = request.params (Identify a resource at change or removal) console.log(request.params)
+// Body = request.body (Data for creation or change of a previous register) console.log(request.body)
 
-
-// index: to display a list, 
-// show: to display a unique dev, 
-// store: to create, 
-// update: to modify, 
+// index: to display a list,
+// show: to display a unique dev,
+// store: to create,
+// update: to modify,
 // destroy: to delete
-
 
 // When we use GET, we use query
