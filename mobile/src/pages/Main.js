@@ -17,6 +17,7 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 
 import api from "../services/api";
+import { connect, disconnect, subscribeToNewDevs } from "../services/socket";
 
 function Main({ navigation }) {
   // Create the State to store the info
@@ -47,6 +48,18 @@ function Main({ navigation }) {
     loadInitialPosition();
   }, []);
 
+  useEffect(() => {
+    subscribeToNewDevs((dev) => setDevs([...devs, dev]));
+  }, [devs]);
+
+  function setupWebsocket() {
+    disconnect();
+
+    const { latitude, longitude } = currentRegion;
+
+    connect(latitude, longitude, techs);
+  }
+
   async function loadDevs() {
     const { latitude, longitude } = currentRegion;
 
@@ -63,6 +76,7 @@ function Main({ navigation }) {
 
     // Setting the data that we got from the api
     setDevs(response.data.devs);
+    setupWebsocket();
   }
 
   // Every time the user changes the map, the currentRegion will be updated
